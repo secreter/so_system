@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <header-nav></header-nav> 
+    <body-nav></body-nav>
     <div>{{ count }}</div>
     <button @click="add">add</button>
     <h1>Hello App!</h1>
@@ -16,6 +18,7 @@
     <transition name="fade">
       <router-view></router-view>
     </transition>
+
   </div>
 
 </template>
@@ -23,7 +26,8 @@
 <script>
 import { mapState , mapActions } from 'vuex'
 import store from './store/index'
-// import Hello from './components/Hello'
+import headerNav from './components/headerNav'
+import bodyNav from './components/bodyNav'
 
 export default {
   name: 'app',
@@ -39,7 +43,8 @@ export default {
     
   },
   components: {
-    
+    headerNav,
+    bodyNav,
   },
   methods: {
     ...mapActions([
