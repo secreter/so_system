@@ -2,23 +2,8 @@
   <div id="app">
     <header-nav></header-nav> 
     <body-nav></body-nav>
-    <div>{{ count }}</div>
-    <button @click="add">add</button>
-    <h1>Hello App!</h1>
-    <p>
-      <!-- 使用 router-link 组件来导航. -->
-      <!-- 通过传入 `to` 属性指定链接. -->
-      <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-      <router-link to="/foo">Go to Foo</router-link>
-      <router-link to="/bar">Go to Bar</router-link>
-      <router-link to="/hello">Go to hello</router-link>
-    </p>
-    <!-- 路由出口 -->
-    <!-- 路由匹配到的组件将渲染在这里 -->
-    <transition name="fade">
-      <router-view></router-view>
-    </transition>
-
+    
+    
   </div>
 
 </template>
@@ -55,6 +40,12 @@ export default {
 </script>
 
 <style>
+#app{
+  display: flex;
+  flex-direction: column; 
+  height: 100%;
+  align-items: stretch;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
 }
