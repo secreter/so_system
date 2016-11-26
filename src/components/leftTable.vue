@@ -11,7 +11,7 @@
 	      </div>
 		</el-table-column>
 		<el-table-column
-		  prop="nickname"
+		  prop="alias"
 		  label="昵称"
 		  >
 		</el-table-column>
@@ -51,6 +51,11 @@
 	      >
 	    </el-table-column>
 	    <el-table-column
+	      prop="cp_id"
+	      label="cp"
+	      >
+	    </el-table-column>
+	    <el-table-column
 	      prop="introduce"
 	      label="自我介绍"
 	      width="150"
@@ -86,7 +91,7 @@
 </template>
 
 <script>
-import {getApplicants ,getTableCount} from '../api/index'
+import {getItems ,getTableCount} from '../api/index'
 const SHOWNUM=10
 export default {
 	created(){
@@ -96,7 +101,14 @@ export default {
 			table:'cp_applicants',
 			field:{
 				id:'i'
-			}
+			},
+			condition:{
+				cp_id:{
+					opreate:'is',
+					type:'i',
+					value:'null'
+				}
+			},
 		}).then(data => {
 			this.tableCount=data.count
 		})
@@ -105,12 +117,13 @@ export default {
     data () {
 	    return {
 	    	queryObj:{
+	    		table:'cp_applicants',
 				field:{
 					//查询的域和类型
 					id:'i',
 					openid:'s',
 					headimgurl:'s',
-					nickname:'s',
+					alias:'s',
 					weichat_id	:'s',
 					sex:'i',
 					age:'i',
@@ -121,15 +134,13 @@ export default {
 					introduce	:'s',
 					words_to_cp	:'s',
 					cp_id	:'i',
-					cp_grade	:'i',
-
 				},
 				condition:{
-					// cp_id:{
-					// 	opreate:'=',
-					// 	type:'i',
-					// 	value:'null'
-					// }
+					cp_id:{
+						opreate:'is',
+						type:'i',
+						value:'null'
+					}
 				},
 				orderby:{
 				    time:1   //降序
@@ -147,7 +158,7 @@ export default {
     },
     methods:{
     	getData(){
-    		getApplicants(this.queryObj)
+    		getItems(this.queryObj)
 			.then((data) => {
 				this.tableData=data.items
 			})

@@ -54,5 +54,64 @@ export function getApplicants(obj){
         }
       })
 	})
+}
 
+export function getTableCount(obj){
+	return new Promise((resolve,reject) => {
+      $.ajax({
+        type,
+        url:domain + '/get_count.php',
+        dataType,
+        data:{
+        	query:JSON.stringify(obj)
+        },
+        success(data){
+          console.log(data)
+          resolve(data)
+        },
+        error(e){
+          console.error('send data to count fail!',e)
+          reject(e)
+        }
+      })
+	})
+}
+
+export function getItems(obj){
+	return new Promise((resolve,reject) => {
+      $.ajax({
+        type,
+        url:domain + '/get_items.php',
+        dataType,
+        data:{
+        	query:JSON.stringify(obj)
+        },
+        success(data){
+          console.log(data)
+          resolve(data)
+        },
+        error(e){
+          console.error('send data to get_items fail!',e)
+          reject(e)
+        }
+      })
+	})
+}
+export function changeCP(obj){
+	return new Promise((resolve,reject) => {
+      $.ajax({
+        type,
+        url:domain + '/change_match.php',
+        dataType,
+        data:obj,
+        success(data){
+          console.log(data)
+          resolve(data)
+        },
+        error(e){
+          console.error('send data to change_match fail!',e)
+          reject(e)
+        }
+      })
+	})
 }
