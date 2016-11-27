@@ -115,3 +115,49 @@ export function changeCP(obj){
       })
 	})
 }
+export function sendTemplateMsg(obj,preview){
+	return new Promise((resolve,reject) => {
+      $.ajax({
+        type,
+        url:domain + '/send_template_msg.php',
+        dataType,
+        data:{
+        	msgData:JSON.stringify(obj),
+        	preview:preview ? true :false
+        },
+        success(data){
+          console.log(data)
+          resolve(data)
+        },
+        error(e){
+          console.error('send data to send_template_msg fail!',e)
+          reject(e)
+        }
+      })
+	})
+}
+
+export function changeActivityStatus(action){
+	return new Promise((resolve,reject) => {
+      $.ajax({
+        type,
+        url:domain + '/change_activity_status.php',
+        dataType,
+        data:{
+        	action
+        },
+        success(data){
+          if (data.success) {
+          	resolve(data)
+          	console.log(data)
+          }else{
+          	console.error(data)
+          }
+        },
+        error(e){
+          console.error('send data to change_activity_status fail!',e)
+          reject(e)
+        }
+      })
+	})
+}

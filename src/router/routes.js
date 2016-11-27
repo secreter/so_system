@@ -1,6 +1,7 @@
 import applicantsTable from '../components/applicantsTable'
 import matchTable from '../components/matchTable'
 import leftTable from '../components/leftTable'
+import templateMsg from '../components/templateMsg'
 // 1. 定义（路由）组件。
 // 可以从其他文件 import 进来
 const Foo = { template: '<div>foo</div>' }
@@ -18,6 +19,7 @@ const routes = [
   { path: '/applicantsTable', component: applicantsTable },
   { path: '/matchTable', component: matchTable },
   { path: '/leftTable', component: leftTable },
+  { path: '/templateMsg', component: templateMsg },
   { path: '/hello', component: hello },
   { path: '/foo', component: Foo },
   { path: '/bar', component: Bar },

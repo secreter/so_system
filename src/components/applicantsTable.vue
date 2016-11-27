@@ -11,7 +11,12 @@
 	      </div>
 		</el-table-column>
 		<el-table-column
-		  prop="nickname"
+		  prop="openid"
+		  label="openid"
+		  >
+		</el-table-column>
+		<el-table-column
+		  prop="alias"
 		  label="昵称"
 		  >
 		</el-table-column>
@@ -110,7 +115,7 @@ export default {
 					id:'i',
 					openid:'s',
 					headimgurl:'s',
-					nickname:'s',
+					alias:'s',
 					weichat_id	:'s',
 					sex:'i',
 					age:'i',

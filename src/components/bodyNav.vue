@@ -1,9 +1,9 @@
 <template>
 <el-row class="so-main">
-  <el-col :span="4" class="sider-wrap">
+  <el-col :span="3" class="sider-wrap">
   	<sider-nav></sider-nav>	
   </el-col>
-  <el-col :span="20" class="so-page">
+  <el-col :span="21" class="so-page">
   	<!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
     <transition name="fade">
