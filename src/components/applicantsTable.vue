@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import {getApplicants ,getTableCount} from '../api/index'
+import {getItems ,getTableCount} from '../api/index'
 const SHOWNUM=10
 export default {
 	created(){
@@ -110,6 +110,7 @@ export default {
     data () {
 	    return {
 	    	queryObj:{
+	    		table:'cp_applicants',
 				field:{
 					//查询的域和类型
 					id:'i',
@@ -130,11 +131,11 @@ export default {
 
 				},
 				condition:{
-					// cp_id:{
-					// 	opreate:'=',
-					// 	type:'i',
-					// 	value:'null'
-					// }
+					activity_num:{
+						opreate:'=',
+						type:'i',
+						value:'2'
+					}
 				},
 				orderby:{
 				    time:1   //降序
@@ -152,7 +153,7 @@ export default {
     },
     methods:{
     	getData(){
-    		getApplicants(this.queryObj)
+    		getItems(this.queryObj)
 			.then((data) => {
 				this.tableData=data.items
 			})
