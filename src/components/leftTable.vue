@@ -104,7 +104,7 @@ export default {
 			},
 			condition:{
 				cp_id:{
-					opreate:'is',
+					operate:'is',
 					type:'i',
 					value:'null'
 				}
@@ -137,7 +137,7 @@ export default {
 				},
 				condition:{
 					cp_id:{
-						opreate:'is',
+						operate:'is',
 						type:'i',
 						value:'null'
 					}

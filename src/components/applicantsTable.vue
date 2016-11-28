@@ -95,16 +95,48 @@ import {getItems ,getTableCount} from '../api/index'
 const SHOWNUM=10
 export default {
 	created(){
+		let obj={
+	        table:'cp_activity_status',
+	        field:{
+	          activity_num:'i',
+	        },
+	        condition:{
+	        },
+	        orderby:{
+	          activity_num:-1
+	        },
+	        limit:{
+	          from:0,
+	          num:1,
+	        }
+	      }
+
+	      getItems(obj)
+	      .then(data => {
+	        this.activity_num=data.items[0].activity_num
+
+	        this.getData()
+			getTableCount({
+				table:'cp_applicants',
+				field:{
+					id:'i'
+				},
+				condition:{
+					activity_num:{
+						operate:'=',
+						type:'i',
+						value:this.activity_num
+					}
+				},
+			}).then(data => {
+				this.tableCount=data.count
+			})
+	      })
+	      .catch(e => {
+	        console.log(e)
+	      })
+
 		
-		this.getData()
-		getTableCount({
-			table:'cp_applicants',
-			field:{
-				id:'i'
-			}
-		}).then(data => {
-			this.tableCount=data.count
-		})
 
 	},
     data () {
@@ -132,7 +164,7 @@ export default {
 				},
 				condition:{
 					activity_num:{
-						opreate:'=',
+						operate:'=',
 						type:'i',
 						value:'2'
 					}
@@ -148,7 +180,8 @@ export default {
 	    	tableData: [],
 	    	currentPage :0,
 	    	pageSize : 10,
-	    	tableCount:0
+	    	tableCount:0,
+	    	activity_num:2
 	    }
     },
     methods:{
@@ -171,7 +204,10 @@ export default {
         this.getData()
         },
         handleCurrentChange(val) {
-          // console.log(`当前页: ${val}`);
+          console.log(`当前页: ${val}`);
+          if (!val) {
+          	val=1
+          }
           this.queryObj.limit.from=(val-1)*this.pageSize
           this.getData()
         }
