@@ -7,12 +7,17 @@
 		  prop="headimgurl"
 		  label="头像"
 		  >
-		  <div class="-headimg-wrap" :style="{background:'url('+row.headimgurl+')',backgroundSize:'contain'}">
+		  <div class="-headimg-wrap" :style="{background:'url('+row.headimgurl+') no-repeat',backgroundSize:'contain'}" :key="row.id">
 	      </div>
 		</el-table-column>
 		<el-table-column
 		  prop="openid"
 		  label="openid"
+		  >
+		</el-table-column>
+		<el-table-column
+		  prop="nickname"
+		  label="微信名"
 		  >
 		</el-table-column>
 		<el-table-column
@@ -147,6 +152,7 @@ export default {
 					//查询的域和类型
 					id:'i',
 					openid:'s',
+					nickname:'s',
 					headimgurl:'s',
 					alias:'s',
 					weichat_id	:'s',
