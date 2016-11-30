@@ -7,7 +7,14 @@
 		  prop="headimgurl"
 		  label="头像"
 		  >
-		  <div class="-headimg-wrap" :style="{background:'url('+row.headimgurl+') no-repeat',backgroundSize:'contain'}" :key="row.id">
+		  <div class="-headimg-wrap" :style="{background:'url('+row.headimgurl+') no-repeat',backgroundSize:'contain'}" :key="row.id" v-popover:popover>
+		     <el-popover
+				  ref="popover"
+				  placement="top-start"
+				  width="200"
+				  trigger="hover">
+				  <div :style="{background:'url('+row.headimgurl+') no-repeat',backgroundSize:'contain',width:'200px',height:'200px'}" :key="row.id"></div>
+			</el-popover>
 	      </div>
 		</el-table-column>
 		<el-table-column
