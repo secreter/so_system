@@ -18,7 +18,6 @@
         <el-menu-item index="1-5">
           <router-link to="/leftTable">剩余情况</router-link>
         </el-menu-item>
-        <el-menu-item index="1-5">群发消息</el-menu-item>
       </el-menu-item-group>
       <el-menu-item-group title="历史活动">
         <el-menu-item index="1-5">查看</el-menu-item>
