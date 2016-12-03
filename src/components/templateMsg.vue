@@ -1,78 +1,118 @@
 <template>
-<div class="so-status">
-	<el-card class="box-card">
-	  <div slot="header" class="clearfix">
-	    <span style="line-height: 36px;" >新建cp活动</span>
-	    <el-button 
-	    	style="float: right;" 
-	    	type="primary"
-	    	@click="finishActivity" 
-	    	:disabled="tableActivityData[0].current_status==0">
-	    	结束
-	    </el-button>
-	    <el-button 
-	    	style="float: right;margin-right:10px;" 
-	    	type="primary"
-	    	@click="addNewActivity" 
-	    	:disabled="tableActivityData[0].current_status==1">
-	    	新建{{tableActivityData[0].current_status}}
-	    </el-button>
-	  </div>
-	  <el-table
-	      :data="tableActivityData"
-	      style="width: 100%">
-	      <el-table-column
-	        prop="activity_num"
-	        label="活动场次"
-	        width="100">
-	      </el-table-column>
-	      <el-table-column
-	        prop="current_status"
-	        label="当前状态"
-	        width="100">
-	      </el-table-column>
-	      <el-table-column
-	        prop="start_time"
-	        label="开始时间">
-	      </el-table-column>
-	    </el-table>
-	</el-card>
-	<el-card class="box-card">
-	  <div slot="header" class="clearfix">
-	    <span style="line-height: 36px;">群发模板消息</span>
-	    <el-button style="float: right;" type="danger" @click="sendTemplateMsgToAll">群发</el-button>
-	    <el-button style="float: right;margin:0 10px;" type="primary" @click="previewTemplateMsg">预览</el-button>
-	  </div>
-	  <div class="template-input">
-	  	<label>发送群体：</label>
-	    <el-radio-group v-model="templateMsgData.sendGroup">
-		    <el-radio :label="1">匹配成功cp</el-radio>
-		    <el-radio :label="2">匹配失败cp</el-radio>
-		  </el-radio-group>
+<div class="so-status-wrap">
+	<div class="so-status">
+		<el-card class="box-card">
+		  <div slot="header" class="clearfix">
+		    <span style="line-height: 36px;" >新建cp活动</span>
+		    <el-button 
+		    	style="float: right;" 
+		    	type="primary"
+		    	@click="finishActivity" 
+		    	:disabled="tableActivityData[0].current_status==0">
+		    	结束
+		    </el-button>
+		    <el-button 
+		    	style="float: right;margin-right:10px;" 
+		    	type="primary"
+		    	@click="addNewActivity" 
+		    	:disabled="tableActivityData[0].current_status==1">
+		    	新建{{tableActivityData[0].current_status}}
+		    </el-button>
+		  </div>
+		  <el-table
+		      :data="tableActivityData"
+		      style="width: 100%">
+		      <el-table-column
+		        prop="activity_num"
+		        label="活动场次"
+		        width="100">
+		      </el-table-column>
+		      <el-table-column
+		        prop="current_status"
+		        label="当前状态"
+		        width="100">
+		      </el-table-column>
+		      <el-table-column
+		        prop="start_time"
+		        label="开始时间">
+		      </el-table-column>
+		    </el-table>
+		</el-card>
+		<el-card class="box-card">
+		  <div slot="header" class="clearfix">
+		    <span style="line-height: 36px;">群发模板消息</span>
+		    <el-button style="float: right;" type="danger" @click="sendTemplateMsgToAll">群发</el-button>
+		    <el-button style="float: right;margin:0 10px;" type="primary" @click="previewTemplateMsg">预览</el-button>
+		  </div>
+		  <div class="template-input">
+		  	<label>发送群体：</label>
+		    <el-radio-group v-model="templateMsgData.sendGroup">
+			    <el-radio :label="1">匹配成功cp</el-radio>
+			    <el-radio :label="2">匹配失败cp</el-radio>
+			  </el-radio-group>
 
-	  </div>
-	  <br>
-	  <div class="template-input">
-	  	<label>前导语：</label>
-	    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.first"></el-input>
-	  </div>
-	  <div class="template-input">
-	  	<label>状态来源：</label>
-	    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword1"></el-input>
-	  </div>
-	  <div class="template-input">
-	  	<label>处理进度：</label>
-	    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword2"></el-input>
-	  </div>
-	  <div class="template-input">
-	  	<label>提交时间：</label>
-	    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword3"></el-input>
-	  </div>
-	  <div class="template-input">
-	  	<label>结束语：</label>
-	    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.remark"></el-input>
-	  </div>
-	</el-card>
+		  </div>
+		  <br>
+		  <div class="template-input">
+		  	<label>前导语：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.first"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>状态来源：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword1"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>处理进度：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword2"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>提交时间：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword3"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>结束语：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.remark"></el-input>
+		  </div>
+		</el-card>
+	</div>
+	<div class="so-status">
+		<el-card class="box-card">
+		  <div slot="header" class="clearfix">
+		    <span style="line-height: 36px;">单发模板消息</span>
+		    <el-button style="float: right;" type="danger" @click="sendTemplateMsgToAll">群发</el-button>
+		    <el-button style="float: right;margin:0 10px;" type="primary" @click="previewTemplateMsg">预览</el-button>
+		  </div>
+		  <div class="template-input">
+		  	<label>发送群体：</label>
+		    <el-radio-group v-model="templateMsgData.sendGroup">
+			    <el-radio :label="1">匹配成功cp</el-radio>
+			    <el-radio :label="2">匹配失败cp</el-radio>
+			  </el-radio-group>
+
+		  </div>
+		  <br>
+		  <div class="template-input">
+		  	<label>前导语：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.first"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>状态来源：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword1"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>处理进度：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword2"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>提交时间：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword3"></el-input>
+		  </div>
+		  <div class="template-input">
+		  	<label>结束语：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.remark"></el-input>
+		  </div>
+		</el-card>
+	</div>
 </div>
 </template>
 
