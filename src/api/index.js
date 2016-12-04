@@ -136,6 +136,27 @@ export function sendTemplateMsg(obj,preview){
       })
 	})
 }
+export function sendTemplateMsg2One(obj,preview){
+  return new Promise((resolve,reject) => {
+      $.ajax({
+        type,
+        url:domain + '/send_template_msg_to_one.php',
+        dataType,
+        data:{
+          msgData:JSON.stringify(obj),
+          preview:preview ? true :false
+        },
+        success(data){
+          console.log(data)
+          resolve(data)
+        },
+        error(e){
+          console.error('send data to send_template_msg_to_one fail!',e)
+          reject(e)
+        }
+      })
+  })
+}
 
 export function changeActivityStatus(action){
 	return new Promise((resolve,reject) => {

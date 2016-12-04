@@ -7,7 +7,7 @@
 		  prop="girlHeadimgurl"
 		  label="头像"
 		  >
-		  <div class="-headimg-wrap" :style="{background:'url('+row.headimgurl+')',backgroundSize:'contain'}">
+		  <div class="-headimg-wrap" :style="{background:'url('+row.girlHeadimgurl+')',backgroundSize:'contain'}" :key="row.girlId">
 	      </div>
 		</el-table-column>
 		<el-table-column

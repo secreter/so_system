@@ -7,7 +7,7 @@
 		  prop="headimgurl"
 		  label="头像"
 		  >
-		  <div class="-headimg-wrap" :style="{background:'url('+row.headimgurl+')',backgroundSize:'contain'}">
+		  <div class="-headimg-wrap" :style="{background:'url('+row.headimgurl+')',backgroundSize:'contain'}" :key="row.id">
 	      </div>
 		</el-table-column>
 		<el-table-column
@@ -16,8 +16,18 @@
 		  >
 		</el-table-column>
 		<el-table-column
+		  prop="openid"
+		  label="openid"
+		  >
+		</el-table-column>
+		<el-table-column
 		  prop="sex"
 		  label="性别"
+		  >
+		</el-table-column>
+		<el-table-column
+		  prop="activity_num"
+		  label="活动"
 		  >
 		</el-table-column>
 		<el-table-column
@@ -134,6 +144,7 @@ export default {
 					introduce	:'s',
 					words_to_cp	:'s',
 					cp_id	:'i',
+					activity_num:'i',
 				},
 				condition:{
 					cp_id:{

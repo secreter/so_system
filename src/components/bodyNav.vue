@@ -40,7 +40,11 @@
 		}
     .so-page{
       padding: 20px;
-      
+      overflow-y: scroll;
+
+    }
+    .so-page::-webkit-scrollbar {
+      display:none
     }
 	}
 </style>

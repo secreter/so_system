@@ -79,37 +79,32 @@
 		<el-card class="box-card">
 		  <div slot="header" class="clearfix">
 		    <span style="line-height: 36px;">单发模板消息</span>
-		    <el-button style="float: right;" type="danger" @click="sendTemplateMsgToAll">群发</el-button>
-		    <el-button style="float: right;margin:0 10px;" type="primary" @click="previewTemplateMsg">预览</el-button>
+		    <el-button style="float: right;" type="danger" @click="sendTemplateMsgToOne">单发</el-button>
+		    <el-button style="float: right;margin:0 10px;" type="primary" @click="previewTemplateMsgToOne">预览</el-button>
 		  </div>
 		  <div class="template-input">
-		  	<label>发送群体：</label>
-		    <el-radio-group v-model="templateMsgData.sendGroup">
-			    <el-radio :label="1">匹配成功cp</el-radio>
-			    <el-radio :label="2">匹配失败cp</el-radio>
-			  </el-radio-group>
-
+		  	<label>touser：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.touser"></el-input>
 		  </div>
-		  <br>
 		  <div class="template-input">
 		  	<label>前导语：</label>
-		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.first"></el-input>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.first"></el-input>
 		  </div>
 		  <div class="template-input">
 		  	<label>状态来源：</label>
-		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword1"></el-input>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.keyword1"></el-input>
 		  </div>
 		  <div class="template-input">
 		  	<label>处理进度：</label>
-		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword2"></el-input>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.keyword2"></el-input>
 		  </div>
 		  <div class="template-input">
 		  	<label>提交时间：</label>
-		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.keyword3"></el-input>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.keyword3"></el-input>
 		  </div>
 		  <div class="template-input">
 		  	<label>结束语：</label>
-		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgData.remark"></el-input>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.remark"></el-input>
 		  </div>
 		</el-card>
 	</div>
@@ -117,7 +112,7 @@
 </template>
 
 <script>
-import {sendTemplateMsg,getItems,changeActivityStatus} from '../api'
+import {sendTemplateMsg,sendTemplateMsg2One,getItems,changeActivityStatus} from '../api'
 export default {
   created(){
   	let obj={
@@ -151,7 +146,17 @@ export default {
     	 tableActivityData: [{
             
           	}
-          ]
+          ],
+        templateMsgDataToOne:{
+    		touser:'o6UDkwIppYchG79HknNe-9fuYugQ',
+    		first:'',
+    		keyword1:'',
+    		keyword2:'',
+    		keyword3:'',
+    		remark:'',
+    		url:''
+    	},
+
     	
     }
   },
@@ -167,18 +172,55 @@ export default {
             message: '发送成功!'
           });
           sendTemplateMsg(this.templateMsgData)
-          // .then()
-          // console.log(this.templateMsgData)
-          this.$notify({
+          .then(data => {
+          	this.$notify({
 	          title: '群发成功',
-	          message: '群发成功',
+	          message: data.status,
 	          type: 'success'
 	        });
+          	
+          })
+          
         }).catch(() => {
           this.$message({
             type: 'info',
             message: '已取消发送！'
           });          
+        });
+      },
+      sendTemplateMsgToOne(){
+      	this.$confirm('此操作将向指定用户发送消息, 是否继续?', '警告', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '发送成功!'
+          });
+          sendTemplateMsg2One(this.templateMsgDataToOne)
+          .then(data => {
+          	this.$notify({
+	          title: '单发成功',
+	          message: data.status,
+	          type: 'success'
+	        });
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消发送！'
+          });          
+        });
+      	
+      },
+      previewTemplateMsgToOne(){
+      	sendTemplateMsg(this.templateMsgDataToOne,true)
+      	console.log(this.templateMsgDataToOne)
+      	this.$notify({
+          title: '预览成功',
+          message: '预览成功',
+          type: 'success'
         });
       },
       previewTemplateMsg(){
@@ -208,6 +250,7 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
+	margin-bottom: 20px;
 	.box-card{
 		width: 50%;
 		flex-grow: 0;
