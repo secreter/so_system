@@ -2,8 +2,6 @@
   <div id="app">
     <header-nav></header-nav> 
     <body-nav></body-nav>
-    
-    
   </div>
 
 </template>
