@@ -21,6 +21,11 @@
 		  >
 		</el-table-column>
 		<el-table-column
+		  prop="weichat_id"
+		  label="微信"
+		  >
+		</el-table-column>
+		<el-table-column
 		  prop="sex"
 		  label="性别"
 		  >
@@ -134,7 +139,7 @@ export default {
 					openid:'s',
 					headimgurl:'s',
 					alias:'s',
-					weichat_id	:'s',
+					weichat_id:'s',
 					sex:'i',
 					age:'i',
 					phonenumber	:'s',

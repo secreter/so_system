@@ -106,6 +106,10 @@
 		  	<label>结束语：</label>
 		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.remark"></el-input>
 		  </div>
+		  <div class="template-input">
+		  	<label>URL：</label>
+		    <el-input class="-input" placeholder="请输入内容" v-model="templateMsgDataToOne.url"></el-input>
+		  </div>
 		</el-card>
 	</div>
 </div>
