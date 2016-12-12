@@ -6,7 +6,7 @@
         <el-menu-item index="1-1">
           <router-link to="/templateMsg">添加和发送</router-link>
         </el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
+        <!-- <el-menu-item index="1-2">选项2</el-menu-item> -->
       </el-menu-item-group>
       <el-menu-item-group title="查看活动">
         <el-menu-item index="1-3">
