@@ -179,7 +179,7 @@ export default {
 					activity_num:{
 						operate:'=',
 						type:'i',
-						value:'2'
+						value:'3'
 					}
 				},
 				orderby:{
@@ -194,7 +194,7 @@ export default {
 	    	currentPage :0,
 	    	pageSize : 10,
 	    	tableCount:0,
-	    	activity_num:2
+	    	activity_num:3
 	    }
     },
     methods:{

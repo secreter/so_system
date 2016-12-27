@@ -190,11 +190,11 @@ export default {
 
 				},
 				condition:{
-					// id:{
-					// 	opreate:'>',
-					// 	type:'i',
-					// 	value:'3'
-					// }
+					activity_num:{
+						opreate:'>',
+						type:'i',
+						value:'3'
+					}
 				},
 				orderby:{
 				    time:1   //降序

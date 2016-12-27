@@ -122,6 +122,11 @@ export default {
 					operate:'is',
 					type:'i',
 					value:'null'
+				},
+				activity_num:{
+					operate:'>',
+					type:'i',
+					value:'3'
 				}
 			},
 		}).then(data => {
@@ -156,6 +161,11 @@ export default {
 						operate:'is',
 						type:'i',
 						value:'null'
+					},
+					activity_num:{
+						operate:'>',
+						type:'i',
+						value:'3'
 					}
 				},
 				orderby:{
