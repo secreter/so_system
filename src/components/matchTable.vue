@@ -191,7 +191,7 @@ export default {
 				},
 				condition:{
 					activity_num:{
-						opreate:'>',
+						operate:'=',
 						type:'i',
 						value:'3'
 					}

@@ -123,11 +123,11 @@ export default {
 					type:'i',
 					value:'null'
 				},
-				activity_num:{
-					operate:'>',
-					type:'i',
-					value:'3'
-				}
+				// activity_num:{
+				// 	operate:'=',
+				// 	type:'i',
+				// 	value:'3'
+				// }
 			},
 		}).then(data => {
 			this.tableCount=data.count
@@ -162,11 +162,11 @@ export default {
 						type:'i',
 						value:'null'
 					},
-					activity_num:{
-						operate:'>',
-						type:'i',
-						value:'3'
-					}
+					// activity_num:{
+					// 	operate:'=',
+					// 	type:'i',
+					// 	value:'3'
+					// }
 				},
 				orderby:{
 				    time:1   //降序
